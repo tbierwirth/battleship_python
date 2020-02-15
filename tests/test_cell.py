@@ -15,3 +15,12 @@ class CellClass(unittest.TestCase):
         cell.place_ship(cruiser)
         self.assertEqual(cell.ship, cruiser)
         self.assertEqual(cell.isEmpty(), False)
+
+    def test_fire_upon(self):
+        cell = Cell("B4")
+        cruiser = Ship("Cruiser", 3)
+        cell.place_ship(cruiser)
+        self.assertEqual(cell.isFiredUpon, False)
+        cell.fire_upon()
+        self.assertEqual(cell.isFiredUpon, True)
+        self.assertEqual(cell.ship.health, 2)
