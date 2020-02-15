@@ -32,3 +32,6 @@ class CellClass(unittest.TestCase):
         self.assertEqual(cell_1.render(), ".")
         cell_1.fire_upon()
         self.assertEqual(cell_1.render(), "M")
+        cell_2.place_ship(cruiser)
+        self.assertEqual(cell_2.render(), ".")
+        self.assertEqual(cell_2.render(reveal = True), "S")
