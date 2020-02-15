@@ -24,3 +24,11 @@ class CellClass(unittest.TestCase):
         cell.fire_upon()
         self.assertEqual(cell.isFiredUpon, True)
         self.assertEqual(cell.ship.health, 2)
+
+    def test_render(self):
+        cell_1 = Cell("B4")
+        cell_2 = Cell("C3")
+        cruiser = Ship("Cruiser", 3)
+        self.assertEqual(cell_1.render(), ".")
+        cell_1.fire_upon()
+        self.assertEqual(cell_1.render(), "M")
