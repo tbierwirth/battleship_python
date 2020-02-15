@@ -8,3 +8,6 @@ class Cell(object):
             return True
         elif self.ship != None:
             return False
+
+    def place_ship(self, ship):
+        self.ship = ship
