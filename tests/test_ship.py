@@ -12,3 +12,9 @@ class ShipClass(unittest.TestCase):
     def test_ship_health(self):
         cruiser = Ship("Cruiser", 3)
         self.assertEqual(cruiser.is_sunk(), False)
+        cruiser.hit()
+        self.assertEqual(cruiser.is_sunk(), False)
+        self.assertEqual(cruiser.health, 2)
+        cruiser.hit()
+        cruiser.hit()
+        self.assertEqual(cruiser.is_sunk(), True)
