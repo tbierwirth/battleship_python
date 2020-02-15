@@ -7,5 +7,8 @@ class Ship(object):
     def is_sunk(self):
         if self.health > 0:
             return False
-        elif self.heatlh <= 0:
+        elif self.health <= 0:
             return True
+
+    def hit(self):
+        self.health -= 1
