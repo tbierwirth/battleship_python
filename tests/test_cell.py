@@ -14,3 +14,4 @@ class CellClass(unittest.TestCase):
         cruiser = Ship("Cruiser", 3)
         cell.place_ship(cruiser)
         self.assertEqual(cell.ship, cruiser)
+        self.assertEqual(cell.isEmpty(), False)
