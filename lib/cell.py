@@ -14,5 +14,18 @@ class Cell(object):
         self.ship = ship
 
     def fire_upon(self):
-        self.ship.hit()
         self.isFiredUpon = True
+        if self.isEmpty() == False:
+            self.ship.hit()
+
+    def render(self, reveal = False):
+        if self.isFiredUpon == False and reveal == True and self.isEmpty() == False:
+            return "S"
+        elif self.isFiredUpon == False and reveal == False:
+            return "."
+        elif self.isEmpty() == True and self.isFiredUpon == True:
+            return "M"
+        elif self.isEmpty() == False and self.isFiredUpon == True and self.ship.is_sunk() == True:
+            return "X"
+        elif self.isEmpty() == False and self.isFiredUpon == True:
+            return "H"
