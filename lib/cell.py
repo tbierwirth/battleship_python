@@ -25,7 +25,7 @@ class Cell(object):
             return "."
         elif self.isEmpty() == True and self.isFiredUpon == True:
             return "M"
+        elif self.isEmpty() == False and self.isFiredUpon == True and self.ship.is_sunk() == True:
+            return "X"
         elif self.isEmpty() == False and self.isFiredUpon == True:
             return "H"
-        elif self.isFiredUpon == True and self.ship.is_sunk() == True:
-            return "X"
