@@ -31,3 +31,5 @@ class BoardClass(unittest.TestCase):
         self.assertEqual(board.isValidPlacement(submarine, ["C1", "B1"]), False)
         self.assertEqual(board.isValidPlacement(cruiser, ["A1", "B2", "C3"]), False)
         self.assertEqual(board.isValidPlacement(submarine, ["C2", "D3"]), False)
+        self.assertEqual(board.isValidPlacement(submarine, ["A1", "A2"]), True)
+        self.assertEqual(board.isValidPlacement(cruiser, ["B1", "C1", "D1"]), True)
