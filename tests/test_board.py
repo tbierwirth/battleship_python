@@ -33,3 +33,12 @@ class BoardClass(unittest.TestCase):
         self.assertEqual(board.isValidPlacement(submarine, ["C2", "D3"]), False)
         self.assertEqual(board.isValidPlacement(submarine, ["A1", "A2"]), True)
         self.assertEqual(board.isValidPlacement(cruiser, ["B1", "C1", "D1"]), True)
+
+    def test_placing_ship(self):
+        board = Board(4, 4)
+        cruiser = Ship("Cruiser", 3)
+        board.place(cruiser, ["A1", "A2", "A3"])
+        self.assertEqual(board.cells["A1"].ship, cruiser)
+        self.assertEqual(board.cells["A2"].ship, cruiser)
+        self.assertEqual(board.cells["A3"].ship, cruiser)
+        self.assertTrue(board.cells["A1"].ship == board.cells["A3"].ship)
