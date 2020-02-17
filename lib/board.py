@@ -20,11 +20,13 @@ class Board(object):
         cells = list(self.cells)
         letters = []
         numbers = []
+        empty = []
         for coordinate in coordinates:
             letter, number = coordinate
             letters.append(letter)
             numbers.append(number)
-        if ship.length == len(coordinates) and (len(set(numbers)) != len(set(letters))):
+            empty.append(self.cells[coordinate].isEmpty())
+        if ship.length == len(coordinates) and (len(set(numbers)) != len(set(letters))) and all(empty):
             if len(set(letters)) == 1 and len(set(numbers)) != 1:
                 consecutive = []
                 for i in range(len(numbers) - 1):
