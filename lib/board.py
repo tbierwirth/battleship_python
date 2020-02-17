@@ -43,3 +43,8 @@ class Board(object):
                     return False
         else:
             return False
+
+    def place(self, ship, coordinates):
+        if self.isValidPlacement(ship, coordinates):
+            for coordinate in coordinates:
+                self.cells[coordinate].place_ship(ship)
