@@ -9,3 +9,9 @@ class Board(object):
         for x in range(width):
             for y in range(height):
                 self.cells[f"{letters[x]}{numbers[y]}"] = Cell(f"{letters[x]}{numbers[y]}")
+
+    def isValidCoordinate(self, coordinate):
+        if coordinate not in self.cells:
+            return False
+        else:
+            return True
