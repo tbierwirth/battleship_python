@@ -18,3 +18,16 @@ class BoardClass(unittest.TestCase):
         self.assertEqual(board.isValidCoordinate("D4"), True)
         self.assertEqual(board.isValidCoordinate("A5"), False)
         self.assertEqual(board.isValidCoordinate("E1"), False)
+
+    def test_is_valid_placement(self):
+        board = Board(4, 4)
+        cruiser = Ship("Cruiser", 3)
+        submarine = Ship("Submarine", 2)
+        self.assertEqual(board.isValidPlacement(cruiser, ["A1", "A2"]), False)
+        self.assertEqual(board.isValidPlacement(submarine, ["A2", "A3", "A4"]), False)
+        self.assertEqual(board.isValidPlacement(cruiser, ["A1", "A2", "A4"]), False)
+        self.assertEqual(board.isValidPlacement(submarine, ["A1", "C1"]), False)
+        self.assertEqual(board.isValidPlacement(cruiser, ["A3", "A2", "A1"]), False)
+        self.assertEqual(board.isValidPlacement(submarine, ["C1", "B1"]), False)
+        self.assertEqual(board.isValidPlacement(cruiser, ["A1", "B2", "C3"]), False)
+        self.assertEqual(board.isValidPlacement(submarine, ["C2", "D3"]), False)
