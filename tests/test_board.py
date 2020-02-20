@@ -45,3 +45,10 @@ class BoardClass(unittest.TestCase):
         self.assertTrue(board.cells["A1"].ship == board.cells["A3"].ship)
         # Test for overlap
         self.assertFalse(board.isValidPlacement(submarine, ["A1", "B1"]))
+
+    def test_render_boad(self):
+        board = Board(4, 4)
+        cruiser = Ship("Cruiser", 3)
+        board.place(cruiser, ["A1", "A2", "A3"])
+        self.assertEqual(board.render(),  "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+        self.assertEqual(board.render(True),  "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
