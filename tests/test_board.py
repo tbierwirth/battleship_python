@@ -50,5 +50,5 @@ class BoardClass(unittest.TestCase):
         board = Board(4, 4)
         cruiser = Ship("Cruiser", 3)
         board.place(cruiser, ["A1", "A2", "A3"])
-        self.assertEqual(board.render(),  "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
-        self.assertEqual(board.render(True),  "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+        self.assertEqual(board.render(),  "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . ")
+        self.assertEqual(board.render(True),  "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . ")
