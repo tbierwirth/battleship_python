@@ -52,3 +52,8 @@ class BoardClass(unittest.TestCase):
         board.place(cruiser, ["A1", "A2", "A3"])
         self.assertEqual(board.render(),  "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . ")
         self.assertEqual(board.render(True),  "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . ")
+        board.cells['A1'].fire_upon()
+        self.assertEqual(board.render(True),  "  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . ")
+        board.cells['A2'].fire_upon()
+        board.cells['A3'].fire_upon()
+        self.assertEqual(board.render(True),  "  1 2 3 4 \nA X X X . \nB . . . . \nC . . . . \nD . . . . ")
