@@ -21,7 +21,7 @@ class Cell(object):
     def render(self, reveal = False):
         if self.isFiredUpon == False and reveal == True and self.isEmpty() == False:
             return "S"
-        elif self.isFiredUpon == False and reveal == False:
+        elif self.isFiredUpon == False:
             return "."
         elif self.isEmpty() == True and self.isFiredUpon == True:
             return "M"
