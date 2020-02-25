@@ -50,3 +50,24 @@ class Board(object):
         if self.isValidPlacement(ship, coordinates):
             for coordinate in coordinates:
                 self.cells[coordinate].place_ship(ship)
+
+    def render(self, reveal = False):
+        letters = []
+        numbers = []
+        for cell in set(self.cells):
+            letter, number = cell
+            if letter not in letters:
+                letters.append(letter)
+            if number not in numbers:
+                numbers.append(number)
+        letters.sort()
+        numbers.sort()
+        board = "  "
+        for number in numbers:
+            board += f"{number} "
+        for letter in letters:
+            board += f"\n{letter} "
+            cells = dict(filter(lambda cell: letter in cell[0], self.cells.items()))
+            for cell in cells:
+                board += f"{self.cells[cell].render(reveal)} "
+        return board
