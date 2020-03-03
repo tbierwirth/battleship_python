@@ -3,6 +3,7 @@ import os
 from lib.ship import Ship
 from lib.cell import Cell
 from lib.board import Board
+import random
 
 print ('%s Welcome to BATTLESHIP %s' % (fg(1), attr(0)))
 choice = input("Press P to play or Q to quit \n")
@@ -56,6 +57,23 @@ if choice.lower() == "p":
         else:
             player.place(pc_cruiser, cruiser_coords.split(' '))
             break
+
+    os.system('clear')
+
+    while True:
+        sub_coords = random.sample(list(cpu.cells), 2)
+        if cpu.isValidPlacement(npc_submarine, sub_coords):
+            cpu.place(npc_submarine, sub_coords)
+            break
+
+    while True:
+        cruiser_coords = random.sample(list(cpu.cells), 3)
+        if cpu.isValidPlacement(npc_cruiser, cruiser_coords):
+            cpu.place(npc_cruiser, cruiser_coords)
+            break
+
+    print(player.render(True))
+    print(cpu.render())
 elif choice.lower() == "q":
     print("Quit")
 else:
