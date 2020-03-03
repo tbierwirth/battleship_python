@@ -57,3 +57,10 @@ class BoardClass(unittest.TestCase):
         board.cells['A2'].fire_upon()
         board.cells['A3'].fire_upon()
         self.assertEqual(board.render(True),  "  1 2 3 4 \nA X X X . \nB . . . . \nC . . . . \nD . . . . ")
+
+    def test_large_board(self):
+        player = Board(10, 10)
+        cpu = Board(10, 10)
+        self.assertIsInstance(player, Board)
+        self.assertIsInstance(cpu, Board)
+        self.assertEqual(player.render(),  "  1 2 3 4 5 6 7 8 9 10 \nA . . . . . . . . . . \nB . . . . . . . . . . \nC . . . . . . . . . . \nD . . . . . . . . . . \nE . . . . . . . . . . \nF . . . . . . . . . . \nG . . . . . . . . . . \nH . . . . . . . . . . \nI . . . . . . . . . . \nJ . . . . . . . . . . ")
