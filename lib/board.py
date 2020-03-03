@@ -23,9 +23,8 @@ class Board(object):
         numbers = []
         empty = []
         for coordinate in coordinates:
-            letter, number = coordinate
-            letters.append(letter)
-            numbers.append(number)
+            letters.append(re.split('(\d+)', coordinate)[0])
+            numbers.append(re.split('(\d+)', coordinate)[1])
             empty.append(self.cells[coordinate].isEmpty())
         if ship.length == len(coordinates) and (len(set(numbers)) != len(set(letters))) and all(empty):
             if len(set(letters)) == 1 and len(set(numbers)) != 1:
