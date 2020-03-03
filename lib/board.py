@@ -1,4 +1,5 @@
 import string
+import re
 from lib.cell import Cell
 
 class Board(object):
@@ -54,14 +55,13 @@ class Board(object):
     def render(self, reveal = False):
         letters = []
         numbers = []
-        for cell in set(self.cells):
-            letter, number = cell
+        for cell in self.cells.items():
+            letter = re.split('(\d+)',cell[0])[0]
+            number = re.split('(\d+)', cell[0])[1]
             if letter not in letters:
                 letters.append(letter)
             if number not in numbers:
                 numbers.append(number)
-        letters.sort()
-        numbers.sort()
         board = "  "
         for number in numbers:
             board += f"{number} "
