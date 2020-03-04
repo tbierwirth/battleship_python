@@ -1,4 +1,5 @@
 import string
+import re
 from lib.cell import Cell
 
 class Board(object):
@@ -22,9 +23,8 @@ class Board(object):
         numbers = []
         empty = []
         for coordinate in coordinates:
-            letter, number = coordinate
-            letters.append(letter)
-            numbers.append(number)
+            letters.append(re.split('(\d+)', coordinate)[0])
+            numbers.append(re.split('(\d+)', coordinate)[1])
             empty.append(self.cells[coordinate].isEmpty())
         if ship.length == len(coordinates) and (len(set(numbers)) != len(set(letters))) and all(empty):
             if len(set(letters)) == 1 and len(set(numbers)) != 1:
@@ -54,14 +54,13 @@ class Board(object):
     def render(self, reveal = False):
         letters = []
         numbers = []
-        for cell in set(self.cells):
-            letter, number = cell
+        for cell in self.cells.items():
+            letter = re.split('(\d+)',cell[0])[0]
+            number = re.split('(\d+)', cell[0])[1]
             if letter not in letters:
                 letters.append(letter)
             if number not in numbers:
                 numbers.append(number)
-        letters.sort()
-        numbers.sort()
         board = "  "
         for number in numbers:
             board += f"{number} "
