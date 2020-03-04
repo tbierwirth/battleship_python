@@ -72,8 +72,22 @@ if choice.lower() == "p":
             cpu.place(npc_cruiser, cruiser_coords)
             break
 
-    print(player.render(True))
-    print(cpu.render())
+    while True:
+        print("======== COMPUTER BOARD ========")
+        print(cpu.render())
+        print("======== YOUR BOARD ========")
+        print(player.render(True))
+        shots_fire = []
+
+        while True:
+            coord = input("Choose a coordinate on the CPU's board to fire upon: \n")
+            if cpu.isValidCoordinate(coord) == False:
+                print("Please choose a valid coordinate")
+            else:
+                import pdb; pdb.set_trace()
+                break
+
+
 elif choice.lower() == "q":
     print("Quit")
 else:
